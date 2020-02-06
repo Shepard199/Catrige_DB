@@ -1,0 +1,70 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+    x:Class="Catrige_DB.ShowRefillLog"
+    Title="ShowRefillLog" Width="887" Height="443">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="675*" />
+            <ColumnDefinition Width="157*" />
+            <ColumnDefinition Width="55*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*" />
+            <RowDefinition Height="53*" />
+        </Grid.RowDefinitions>
+        <!--<ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0,0.2,0,-0.2" Grid.Row="1">
+            <DataGrid x:Name="DgRefillLog" ItemsSource="{Binding LoadDataBinding}" VerticalAlignment="Stretch" AutoGenerateColumns="False" Height="124">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Order}" Header="Номер" Width="50" IsReadOnly="True" FontSize="14"/>
+                    <DataGridTextColumn Binding="{Binding Seal}" Header="Пломба" Width="60" IsReadOnly="True" FontSize="14"/>
+                    <DataGridTextColumn Binding="{Binding Model}" Header="Модель" Width="80" IsReadOnly="True" FontSize="14"/>
+                    <DataGridTextColumn Binding="{Binding Organization}" Header="Организация" Width="130" IsReadOnly="True" FontSize="14"/>
+                    <DataGridTextColumn Binding="{Binding Accepted}" Header="Принят" Width="120" IsReadOnly="True" FontSize="14"/>
+                    <DataGridTextColumn Binding="{Binding Filled}" Header="Заправлен" Width="120" IsReadOnly="True" FontSize="14"/>
+                    <DataGridTextColumn Binding="{Binding Replaced}" Header="Замены" Width="120" IsReadOnly="True" FontSize="14"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>-->
+        <Button x:Name="UpdateRefillingLog" Content="Обновить данные"
+                Margin="1.8,0,0,0.4" VerticalAlignment="Bottom" Height="38"
+                Click="UpdateRefillingLog_Click" FontSize="15" HorizontalAlignment="Left" Width="155" Grid.Column="1" />
+        <DataGrid x:Name="DgRefillLog"
+                  ItemsSource="{Binding LoadDataBinding}"
+                  SelectionMode="Single"
+                  AutoGenerateColumns="False" UseLayoutRounding="False" VerticalContentAlignment="Stretch"
+                  HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" Height="394.8"
+                  HorizontalAlignment="Left" Width="887.2" Grid.ColumnSpan="3"
+                  Grid.Column="0" Grid.Row="1">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Order}" Header="Номер" Width="50" IsReadOnly="True" FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Seal}" Header="Пломба" Width="65" IsReadOnly="True" FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Model}" Header="Модель" Width="75" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Organization}" Header="Организация" Width="95" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Accepted}" Header="Принят" Width="105" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Filled}" Header="Заправлен" Width="105" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Replaced}" Header="Замены" Width="110" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Note}" Header="Ремонт" Width="120" IsReadOnly="True"
+                                    FontSize="14" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

@@ -1,0 +1,34 @@
+﻿<Window x:Class="Catrige_DB.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Учёт катриджей" Height="670" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded"
+        ResizeMode="NoResize" Icon="main.ico" Width="936">
+    <Grid Background="Gray" Margin="0,0,0,-0.2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="47*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ToolBar x:Name="TbMainWindow" Height="47" VerticalAlignment="Top">
+            <Button x:Name="BtSettings" Click="BtSettings_Click">
+                <Image Source="Resources/Settings.ico" Height="21" Width="38" />
+            </Button>
+            <Separator />
+            <Button x:Name="BtAddToRefill" Content="Принять картридж на заправку" Click="BtAdd_Click" FontSize="15" />
+            <Separator />
+            <Button x:Name="BtCheckCarridge" Content="Проверить катридж" Click="BtCheck_Click" FontSize="15" />
+            <Separator />
+            <Button x:Name="BtShowToFilling" Content="Лог заправки" Click="BtShowToFilling_Click" FontSize="15" />
+            <Separator />
+            <Button x:Name="BtAddNewCartridge" Content="Добавить катридж" Click="BtAddNew_Click" FontSize="15" />
+            <Separator />
+            <Button x:Name="BtDeleteCartridge" Content="Удалить / Списать картридж" Click="BtDelete_Click"
+                    FontSize="15" />
+        </ToolBar>
+        <Frame x:Name="MaiPageFrame" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+               Margin="10,52,9.6,9.8"
+               Grid.Row="0" Width="910" Height="579" />
+    </Grid>
+</Window>
