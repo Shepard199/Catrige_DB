@@ -1,0 +1,10 @@
+# Ignore the packages directory
+packages/
+
+
+# Ignore Logs
+logs
+*.log
+
+# Ignore the build directory
+Catrige_DB/bin
