@@ -1,10 +1,21 @@
 # Ignore the packages directory
-packages/
+/packages/
 
 
 # Ignore Logs
 logs
 *.log
 
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
 # Ignore the build directory
-Catrige_DB/bin
+/Catrige_DB/bin
+
+# Executables
+*.exe
+*.out
+*.app
