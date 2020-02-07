@@ -12,8 +12,10 @@ logs
 *.o
 *.obj
 
+
 # Ignore the build directory
 /Catrige_DB/bin/
+/Catrige_DB/obj/
 /.vs/
 
 # Executables
