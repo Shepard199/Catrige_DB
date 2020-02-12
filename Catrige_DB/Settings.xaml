@@ -1,0 +1,10 @@
+﻿<Page x:Class="Catrige_DB.Settings"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Settings" Width="910" Height="579">
+
+    <Grid>
+        <CheckBox x:Name="CheckBoxAutoAppMode" IsChecked="False" Content="Автоматический режим работы приложения" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="15" Checked="CheckBoxAutoAppMode_Checked" Unchecked="CheckBoxAutoAppMode_Unchecked"/>
+
+    </Grid>
+</Page>

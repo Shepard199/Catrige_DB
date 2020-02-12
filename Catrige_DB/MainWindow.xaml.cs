@@ -15,7 +15,7 @@ namespace Catrige_DB
         public MainWindow()
         {
             InitializeComponent();
-            Title += UserStatus;
+            Title += UserStatus + " - " + AppModeStatus();
 
 
             //MainFrameHeight = Width;
@@ -27,6 +27,23 @@ namespace Catrige_DB
             //MessageBox.Show("Current Page Size: " + Height + "/" + Width + " Main Frame Size: " +
             //                GrFrame.Width + "/" +
             //                GrFrame.Height);
+        }
+
+        public static string AppModeStatus()
+        {
+            string status = string.Empty;
+            if (AutoAppMode)
+            {
+                status = "Приложение находится в автоматическом режиме";
+                return status;
+            }
+            if (AutoAppMode == false)
+            {
+                status = "Приложение находится в ручнои режиме";
+                return status;
+            }
+
+            return status;
         }
 
         public void BtAdd_Click(object sender, EventArgs e)
@@ -55,6 +72,7 @@ namespace Catrige_DB
 
         private void BtSettings_Click(object sender, RoutedEventArgs e)
         {
+            MaiPageFrame.NavigationService.Navigate(new Uri("Settings.xaml", UriKind.Relative));
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

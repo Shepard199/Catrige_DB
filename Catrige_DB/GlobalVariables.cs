@@ -1,11 +1,11 @@
-﻿using System;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace Catrige_DB
 {
     internal class GlobalVariables
     {
-        public static bool IsAdmin;
+        public static bool IsAdmin = false;
+        public static bool AutoAppMode = false;
         public static string UserStatus;
 
         //MessageBox.Show($"MySQL version : {connection.ServerVersion}");

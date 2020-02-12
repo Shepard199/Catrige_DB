@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 using MySql.Data.MySqlClient;
@@ -17,35 +18,61 @@ namespace Catrige_DB
         public AddNew()
         {
             InitializeComponent();
+            DataPickerTodayDate.Text = DateTime.Today.ToShortDateString();
+            FillOrganComboBox();
+            FillModelComboBox();
         }
-
-        //private readonly string _sql =
-        //    "INSERT INTO [Cartridges] (Seal, Model, Organization, Data) VALUES (@Seal, @Model, @Organization, @Data)";
 
         private void BtAddNew_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(TextBoxSeal.Text, out int i) == false || TextBoxModel.Text.Length < 3 ||
-                ComboBoxOrgan.Text == "")
+            if (int.TryParse(TextBoxSeal.Text, out var i) == false || ComboBoxModel.Text.Length < 3 ||
+                /*ComboBoxOrgan.Text == ""*/ ComboBoxOrgan.Text == string.Empty)
                 MessageBox.Show("Заполните все поля!");
             else
-                using (MySqlConnection connection = new MySqlConnection(ConnectionString.ToString()))
+                using (var connection = new MySqlConnection(ConnectionString.ToString()))
                 {
                     connection.Open();
-                    MySqlCommand command = new MySqlCommand(
-                        $"insert into `Cartridges`(`Seal`,`Model`, `Organization`, `Data`) values('{i}', '{TextBoxModel.Text}', '{ComboBoxOrgan.Text}', '{DpShosCatriges.Text}')",
+                    var command = new MySqlCommand(
+                        $"insert into `Cartridges`(`Seal`,`Model`, `Organization`, `Data`) values('{i}', '{ComboBoxModel.Text}', '{ComboBoxOrgan.Text}', '{DataPickerTodayDate.Text}')",
                         connection);
                     command.ExecuteNonQuery();
                     connection.Close();
                     MessageBox.Show("Картридж успешно добавлен!");
-                    //try
-                    //{
-                    //    int n = cmd.ExecuteNonQuery();
-                    //}
-                    //catch (SqlException ex)
-                    //{
-                    //    System.Windows.Forms.MessageBox.Show(ex.Message);
-                    //}
                 }
+        }
+
+        private void FillOrganComboBox()
+        {
+            using (var connection = new MySqlConnection(ConnectionString.ToString()))
+            {
+                var adapter = new MySqlDataAdapter("SELECT Organization FROM Organization ORDER BY Organization",
+                    connection);
+                connection.Open();
+                var dt = new DataTable();
+                adapter.Fill(dt);
+                ComboBoxOrgan.ItemsSource = dt.DefaultView;
+                ComboBoxOrgan.DisplayMemberPath = "Organization";
+                //ComboBoxOrgan.SelectedValuePath = "Phone";
+                adapter.Dispose();
+                connection.Close();
+            }
+        }
+
+        private void FillModelComboBox()
+        {
+            using (var connection = new MySqlConnection(ConnectionString.ToString()))
+            {
+                var adapter = new MySqlDataAdapter("SELECT model, vendor FROM cartridgesmodels ORDER BY model",
+                    connection);
+                connection.Open();
+                var dt = new DataTable();
+                adapter.Fill(dt);
+                ComboBoxModel.ItemsSource = dt.DefaultView;
+                ComboBoxModel.DisplayMemberPath = "model";
+                //ComboBoxModel.SelectedValuePath = "vendor";
+                adapter.Dispose();
+                connection.Close();
+            }
         }
 
         private void BtShowCartridges_Click(object sender, EventArgs e)

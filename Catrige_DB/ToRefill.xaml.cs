@@ -14,8 +14,6 @@ namespace Catrige_DB
     /// </summary>
     public partial class ToRefill : Page
     {
-        //private const string Sql = "INSERT INTO [Refill] (Seal, For_repair) VALUES (@Seal, @For_repair)";
-
         private string _repairStatus = string.Empty;
 
         public ToRefill()
