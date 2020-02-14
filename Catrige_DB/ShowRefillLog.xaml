@@ -4,7 +4,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
     x:Class="Catrige_DB.ShowRefillLog"
-    Title="ShowRefillLog" Width="887" Height="443">
+    Title="ShowRefillLog" Width="910" Height="579">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -36,8 +36,8 @@
                   ItemsSource="{Binding LoadDataBinding}"
                   SelectionMode="Single"
                   AutoGenerateColumns="False" UseLayoutRounding="False" VerticalContentAlignment="Stretch"
-                  HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" Height="394.8"
-                  HorizontalAlignment="Left" Width="887.2" Grid.ColumnSpan="3"
+                  HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" Height="519"
+                  HorizontalAlignment="Left" Width="910" Grid.ColumnSpan="3"
                   Grid.Column="0" Grid.Row="1">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
