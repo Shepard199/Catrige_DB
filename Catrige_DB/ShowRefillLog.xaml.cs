@@ -48,13 +48,14 @@ namespace Catrige_DB
             //conn.Close();
 
             MySqlConnection connection = new MySqlConnection(ConnectionString.ToString());
-            const string sql =
-                "SELECT Refill.Order, Cartridges.Seal, Cartridges.Organization, Cartridges.Model, Refill.Accepted, Refill.Filled, Refill.Replaced, Refill.Note " +
-                "FROM Refill, Cartridges WHERE Cartridges.Seal = Refill.Seal";
+            //const string sql =
+            //    "SELECT Refill.Order, Cartridges.Seal, Cartridges.Organization, Cartridges.Model, Refill.Accepted, Refill.Filled, Refill.Replaced, Refill.Note " +
+            //    "FROM Refill, Cartridges WHERE Cartridges.Seal = Refill.Seal";
             try
             {
                 connection.Open();
-                MySqlCommand cmd = new MySqlCommand(sql, connection);
+                MySqlCommand cmd = new MySqlCommand("SELECT Refill.Order, Cartridges.Seal, Cartridges.Organization, Cartridges.Model, Refill.Accepted, Refill.Filled, Refill.Replaced, Refill.Note " +
+                                                    "FROM Refill, Cartridges WHERE Cartridges.Seal = Refill.Seal", connection);
                 _adp = new MySqlDataAdapter(cmd);
                 _ds = new DataSet();
                 _adp.Fill(_ds, "LoadDataBinding");

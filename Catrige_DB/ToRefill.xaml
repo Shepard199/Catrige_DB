@@ -22,7 +22,7 @@
                   HorizontalAlignment="Right" VerticalAlignment="Top" Content="Требуется ремонт"
                   Checked="CheckBoxForRepair_Checked" Unchecked="CheckBoxForRepair_Unchecked" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                   Grid.Row="0" Grid.Column="1" Width="147" />
-        <TextBox Grid.Row="0" Grid.Column="1" Name="TextBox6" Height="29" Width="142" IsEnabled="False" Margin="0,45,152.4,0"
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="TextBoxForRepair" Height="29" Width="142" IsEnabled="False" Margin="0,45,152.4,0"
                  HorizontalAlignment="Right" VerticalAlignment="Top" TextWrapping="Wrap" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
         <Label Grid.Row="0" Grid.Column="1" x:Name="LbTodayData" FontSize="15" Margin="151,42,0,0" HorizontalAlignment="Left" 
                VerticalAlignment="Top" Content="xx.xx.xxxx" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" Width="72" />
@@ -33,7 +33,43 @@
         <Label Grid.Row="0" Grid.Column="1" x:Name="LabelForRepair" FontSize="15" 
                Margin="0,10,152.4,0" HorizontalAlignment="Right" VerticalAlignment="Top"
                Content="Отметка о ремонте" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="30" Width="142" />
-        <Frame Name="FrameToRefill" Margin="0,3,0.4,0.2" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0"
-               HorizontalContentAlignment="Stretch" Height="443"/>
+        <DataGrid x:Name="DgRefillLog"
+                  ItemsSource="{Binding LoadDataBinding}"
+                  SelectionMode="Single"
+                  AutoGenerateColumns="False" UseLayoutRounding="False" VerticalContentAlignment="Stretch"
+                  HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" Height="461.2"
+                  HorizontalAlignment="Left" Width="910.4" Grid.ColumnSpan="3"
+                  Grid.Column="0" Grid.Row="1">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Order}" Header="Номер" Width="auto" IsReadOnly="True" FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Seal}" Header="Пломба" Width="auto" IsReadOnly="True" FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Model}" Header="Модель" Width="auto" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Organization}" Header="Организация" Width="auto" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Accepted}" Header="Принят" Width="auto" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Filled}" Header="Заправлен" Width="auto" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Replaced}" Header="Замены" Width="auto" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Note}" Header="Ремонт" Width="auto" IsReadOnly="True"
+                                    FontSize="14" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="UpdateRefillingLog" Content="Обновить данные"
+                  Margin="92.6,0,0,32" VerticalAlignment="Bottom" Height="38"
+                  Click="UpdateRefillingLog_Click" FontSize="15" HorizontalAlignment="Left" Width="155" Grid.Row="0"
+                  Grid.Column="2" />
     </Grid>
 </Page>

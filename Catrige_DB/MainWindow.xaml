@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Учёт катриджей" Height="670" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded"
-        ResizeMode="NoResize" Icon="main.ico" Width="936">
+        ResizeMode="CanMinimize" Icon="main.ico" Width="936" SizeToContent="WidthAndHeight">
     <Grid Background="Gray" Margin="0,0,0,-0.2">
         <Grid.RowDefinitions>
             <RowDefinition Height="47*" />
@@ -16,16 +16,11 @@
                 <Image Source="Resources/Settings.ico" Height="21" Width="38" />
             </Button>
             <Separator />
-            <Button x:Name="BtAddToRefill" Content="Принять картридж на заправку" Click="BtAdd_Click" FontSize="15" />
+            <Button x:Name="BtAddToRefill" Content="Принять катридж на заправку" Click="BtAdd_Click" FontSize="15" />
+            <Separator />
+            <Button x:Name="BtAddNewCartridge" Content="Катриджы на балансе" Click="BtAddNew_Click" FontSize="15" />
             <Separator />
             <Button x:Name="BtCheckCarridge" Content="Проверить катридж" Click="BtCheck_Click" FontSize="15" />
-            <Separator />
-            <Button x:Name="BtShowToFilling" Content="Лог заправки" Click="BtShowToFilling_Click" FontSize="15" />
-            <Separator />
-            <Button x:Name="BtAddNewCartridge" Content="Добавить катридж" Click="BtAddNew_Click" FontSize="15" />
-            <Separator />
-            <Button x:Name="BtDeleteCartridge" Content="Удалить / Списать картридж" Click="BtDelete_Click"
-                    FontSize="15" />
         </ToolBar>
         <Frame x:Name="MaiPageFrame" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
                Margin="10,52,9.6,9.8"

@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using  static Catrige_DB.GlobalVariables;
 
 namespace Catrige_DB
 {
@@ -23,6 +12,10 @@ namespace Catrige_DB
         public Settings()
         {
             InitializeComponent();
+            TextBoxServerIp.Text = ServerIp;
+            TextBoxServerLogin.Text = ServerUserId;
+            TextBoxServerPassword.Text = ServerPassword;
+            TextBoxServerDataBase.Text = ServerDatabase;
         }
 
         private void CheckBoxAutoAppMode_Checked(object sender, RoutedEventArgs e)
@@ -30,7 +23,7 @@ namespace Catrige_DB
             if (CheckBoxAutoAppMode.IsChecked.Value)
             {
                 //label1.Text = @"Автоматический режим включен!";
-                GlobalVariables.AutoAppMode = true;
+                AutoAppMode = true;
             }
         }
 
@@ -39,8 +32,28 @@ namespace Catrige_DB
             if (CheckBoxAutoAppMode.IsChecked.Value == false)
             {
                 //label1.Text = @"Автоматический режим включен!";
-                GlobalVariables.AutoAppMode = false;
+                AutoAppMode = false;
             }
+        }
+
+        private void TextBoxServerIp_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ServerIp = TextBoxServerIp.Text;
+        }
+
+        private void TextBoxServerLogin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ServerUserId = TextBoxServerLogin.Text;
+        }
+
+        private void TextBoxServerDataBase_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ServerDatabase = TextBoxServerDataBase.Text;
+        }
+
+        private void TextBoxServerPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ServerPassword = TextBoxServerPassword.Text;
         }
     }
 }

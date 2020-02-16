@@ -15,7 +15,7 @@ namespace Catrige_DB
         public MainWindow()
         {
             InitializeComponent();
-            Title += UserStatus + " - " + AppModeStatus();
+            Title += " { " + UserStatus + " }" + " - " + AppModeStatus();
 
 
             //MainFrameHeight = Width;
@@ -37,7 +37,7 @@ namespace Catrige_DB
                 status = "Приложение находится в автоматическом режиме";
                 return status;
             }
-            if (AutoAppMode == false)
+            else if (AutoAppMode == false)
             {
                 status = "Приложение находится в ручнои режиме";
                 return status;
@@ -53,21 +53,11 @@ namespace Catrige_DB
 
         public void BtAddNew_Click(object sender, EventArgs e)
         {
-            MaiPageFrame.NavigationService.Navigate(new Uri("AddNewCatriges.xaml", UriKind.Relative));
-        }
-
-        public void BtDelete_Click(object sender, EventArgs e)
-        {
-            MaiPageFrame.NavigationService.Navigate(new Uri("DeleteCatriges.xaml", UriKind.Relative));
+            MaiPageFrame.NavigationService.Navigate(new Uri("CatridgesOnBalace.xaml", UriKind.Relative));
         }
 
         public void BtCheck_Click(object sender, EventArgs e)
         {
-        }
-
-        public void BtShowToFilling_Click(object sender, EventArgs e)
-        {
-            MaiPageFrame.NavigationService.Navigate(new Uri("ShowRefillLog.xaml", UriKind.Relative));
         }
 
         private void BtSettings_Click(object sender, RoutedEventArgs e)

@@ -22,6 +22,7 @@ namespace Catrige_DB
         public DeleteCatriges()
         {
             InitializeComponent();
+            LbErrorMessage.Visibility = Visibility.Hidden;
             DispatcherTimer timer = new DispatcherTimer
             {
                 Interval = new TimeSpan(0, 0, 1) //in Hour, Minutes, Second.
@@ -35,44 +36,84 @@ namespace Catrige_DB
 
         private void DataLoad()
         {
-            MySqlConnection connection = new MySqlConnection(ConnectionString.ToString());
-            connection.Open();
-            MySqlCommand cmd =
-                new MySqlCommand(
-                    "Select * from Cartridges", connection);
-            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
-            DataSet ds = new DataSet();
-            adp.Fill(ds, "LoadDataBinding");
-            CatBdDataGrid.DataContext = ds.Tables[0];
-            connection.Close();
-        }
-
-        private void BtDelete_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(TbSeal.Text))
+            using (MySqlConnection connection = new MySqlConnection(ConnectionString.ToString()))
             {
-                using (MySqlConnection connection = new MySqlConnection(ConnectionString.ToString()))
+
+                try
                 {
                     connection.Open();
                     MySqlCommand cmd =
                         new MySqlCommand(
-                            "DELETE FROM Cartridges Where Seal = @Seal", connection);
+                            "Select * from Cartridges", connection);
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
                     adp.Fill(ds, "LoadDataBinding");
                     CatBdDataGrid.DataContext = ds.Tables[0];
                     connection.Close();
-                    MessageBox.Show("Удаление завершено!");
-                    DataLoad();
+
+                }
+
+                catch (MySqlException ex)
+                {
+                    MessageBox.Show(ex.Message + WindowTitle);
                 }
             }
-            else
+
+        }
+
+        private void BtDelete_Click(object sender, EventArgs e)
+        {
+            //if (!string.IsNullOrWhiteSpace(TbSeal.Text))
+            //{
+            //    using (MySqlConnection connection = new MySqlConnection(ConnectionString.ToString()))
+            //    {
+            //        connection.Open();
+            //        MySqlCommand cmd =
+            //            new MySqlCommand(
+            //                "DELETE FROM Cartridges Where Seal = @Seal", connection);
+            //        MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            //        DataSet ds = new DataSet();
+            //        adp.Fill(ds, "LoadDataBinding");
+            //        CatBdDataGrid.DataContext = ds.Tables[0];
+            //        connection.Close();
+            //        MessageBox.Show("Удаление завершено!");
+            //        DataLoad();
+            //    }
+            //}
+            //else
+            //{
+            //    LbErrorMessage.Visibility = Visibility.Visible;
+            //    //timer.Enabled = true;
+            //    //timer.Start();
+            //    _i = 0;
+            //}
+
+            using (var connection = new MySqlConnection(ConnectionString.ToString()))
             {
-                LbErrorMessage.Visibility = Visibility.Visible;
-                //timer.Enabled = true;
-                //timer.Start();
-                _i = 0;
+                connection.Open();
+                if (!string.IsNullOrWhiteSpace(TbSeal.Text))
+                {
+                    const string sql = "DELETE FROM Cartridges Where Seal = @Seal";
+                    var cmd = new MySqlCommand(sql, connection);
+                    cmd.Parameters.AddWithValue("Seal", TbSeal.Text);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show(@"Удаление завершено!");
+                    DataLoad();
+                }
+                else
+                {
+                    var i = Convert.ToInt32(dataGridView1.CurrentRow.Cells["Seal"].FormattedValue.ToString());
+                    var sql = /*"DELETE FROM Refill WHERE Seal = " + i + */" DELETE FROM Cartridges WHERE Seal = " + i;
+                    MessageBox.Show(@"Вы удалили картридж с пломбой: " +
+                                    dataGridView1.CurrentRow.Cells["Seal"].FormattedValue);
+                    var cmd = new MySqlCommand(sql, connection);
+                    cmd.ExecuteNonQuery();
+                    dataGridView1.Rows.RemoveAt(dataGridView1.SelectedCells[0].RowIndex);
+
+                    //DataLoad();
+                }
             }
+
         }
 
         private void Timer_Tick(object sender, EventArgs e)
