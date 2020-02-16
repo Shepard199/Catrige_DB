@@ -1,2 +1,3 @@
 # Catrige_DB
- Учёт приёма картриджей  (MySQL + Zebra Scaner)
+ (RUS) Учёт приёма картриджей  (WPF + MySQL + Zebra Scaner)
+ (ENG) Cartridge Acceptance Accounting (WPF + MySQL + Zebra Scanner)
