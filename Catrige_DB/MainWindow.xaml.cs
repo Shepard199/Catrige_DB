@@ -16,7 +16,7 @@ namespace Catrige_DB
         {
             InitializeComponent();
             Title += " { " + UserStatus + " }" + " - " + AppModeStatus();
-
+            ApplicationStartUpPath = AppDomain.CurrentDomain.BaseDirectory;
 
             //MainFrameHeight = Width;
             //MainFrameWidth = Height;
