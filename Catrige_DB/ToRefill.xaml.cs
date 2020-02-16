@@ -18,7 +18,6 @@ namespace Catrige_DB
         private string _repairStatus = string.Empty;
         private MySqlDataAdapter _adp;
         private DataSet _ds;
-        public static int LastTableRowNumber;
 
         public ToRefill()
         {
@@ -26,27 +25,6 @@ namespace Catrige_DB
             CheckBoxForRepairFix();
             LoadRefillLog();
             LbTodayData.Content = DateTime.Today.ToShortDateString();
-        }
-
-        private static void GetLastTableRowNumber()
-        {
-            using (MySqlConnection con = new MySqlConnection(ConnectionString.ToString()))
-            {
-                con.Open();
-                string query = "SELECT `refill`.`Order` FROM `refill` ORDER BY `refill`.`Order` DESC LIMIT 1";
-                using (MySqlCommand sda = new MySqlCommand(query, con))
-                {
-                    MySqlDataReader data = sda.ExecuteReader();
-                    if (data.Read())
-                    {
-                        ////textBox2.Text = data.GetValue(0).ToString();
-                        LastTableRowNumber = (int)data.GetValue(0);
-                        //MessageBox.Show(LastTableRowNumber.ToString());
-                    }
-                }
-                con.Close();
-                con.Dispose();
-            }
         }
 
         private void AddCartridge()
@@ -58,8 +36,8 @@ namespace Catrige_DB
                 {
                     if (!string.IsNullOrWhiteSpace(TextBoxSeal.Text) && TextBoxSeal.Text.Length > 2)
                     {
-                        const string sql = "INSERT INTO Refill (refill.Order, Seal, Accepted, Note) " +
-                                           "VALUES (@Order, @Seal, @Accepted, @Note)";
+                        const string sql = "INSERT INTO Refill (Seal, Accepted, Note, Filled) " +
+                                           "VALUES (@Seal, @Accepted, @Note, '')";
                         int.TryParse(TextBoxSeal.Text, out int i);
                         connection.Open();
                         //проверка на наличие картриджа
@@ -67,8 +45,7 @@ namespace Catrige_DB
                         const string sqltmp = "SELECT Seal FROM Refill WHERE Seal=@Seal";
                         MySqlCommand checkCartridgeExist = new MySqlCommand(sqltmp, connection);
                         checkCartridgeExist.Parameters.AddWithValue("@Seal", i);
-                        //int cartridgeExist = (int) checkCartridgeExist.ExecuteScalar();
-                        int cartridgeExist = Convert.ToInt32(checkCartridgeExist.ExecuteScalar());
+                        int cartridgeExist = (int)checkCartridgeExist.ExecuteScalar();
 
                         if (cartridgeExist > 0)
                         {
@@ -81,8 +58,7 @@ namespace Catrige_DB
                         {
                             //cartridge doesn't exist.
 
-                            MySqlCommand cmd = new MySqlCommand(sql, connection);
-                            cmd.Parameters.AddWithValue("@Order", LastTableRowNumber + 1);
+                            var cmd = new MySqlCommand(sql, connection);
                             cmd.Parameters.AddWithValue("@Seal", i);
                             cmd.Parameters.AddWithValue("@Accepted", DateTime.Today.ToShortDateString());
                             if (!string.IsNullOrEmpty(TextBoxForRepair.Text))
@@ -93,16 +69,11 @@ namespace Catrige_DB
                             {
                                 cmd.Parameters.AddWithValue("@Note", _repairStatus);
                             }
-
                             cmd.ExecuteNonQuery();
-                            MessageBox.Show(@"Картридж успешно добавлен!");
+                            MessageBox.Show(@"Картридж успешно добавлен!"); 
                             connection.Close();
-                            LoadRefillLog();
+
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Заполните все поля !!!");
                     }
                 }
                 catch (MySqlException ex)
@@ -120,7 +91,7 @@ namespace Catrige_DB
         {
             const string strQuery =
                 "SELECT Refill.Order, Cartridges.Seal, Cartridges.Organization, Cartridges.Model, Refill.Accepted, Refill.Filled, Refill.Replaced, Refill.Note " +
-                "FROM Refill, Cartridges WHERE Cartridges.Seal = Refill.Seal ORDER BY Refill.Order";
+                "FROM Refill, Cartridges WHERE Cartridges.Seal = Refill.Seal";
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(ConnectionString.ToString()))
@@ -146,8 +117,6 @@ namespace Catrige_DB
             {
                 MessageBox.Show(ex.ToString());
             }
-
-            GetLastTableRowNumber();
         }
 
         private void UpdateDb()

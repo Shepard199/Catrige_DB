@@ -51,20 +51,20 @@
                 </Style>
             </DataGrid.CellStyle>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Order}" Header="Номер" Width="auto" IsReadOnly="True" FontSize="15" />
-                <DataGridTextColumn Binding="{Binding Seal}" Header="Пломба" Width="auto" IsReadOnly="True" FontSize="15" />
+                <DataGridTextColumn Binding="{Binding Order}" Header="Номер" Width="auto" IsReadOnly="True" FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Seal}" Header="Пломба" Width="auto" IsReadOnly="True" FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Model}" Header="Модель" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Organization}" Header="Организация" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Accepted}" Header="Принят" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Filled}" Header="Заправлен" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Replaced}" Header="Замены" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Note}" Header="Ремонт" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="UpdateRefillingLog" Content="Обновить данные"

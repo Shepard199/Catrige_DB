@@ -9,8 +9,9 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="182*"/>
+            <ColumnDefinition Width="535*"/>
+            <ColumnDefinition Width="193*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="75*"/>
@@ -19,30 +20,33 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Button Name="ButtonAddNew" Content="Добавить" Height="41" Width="140" TabIndex="4" Click="BtAddNew_Click"
-                Margin="214.038,0,0,9.2"
-                HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="15" Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" />
-        <ComboBox x:Name="ComboBoxOrganizacions" Height="32" Width="99" TabIndex="2" Margin="0,43,226.962,0"
+                Margin="42.4,0,0,9.2"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="15" Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" />
+        <ComboBox x:Name="ComboBoxOrganizacions" Height="32" Width="99" TabIndex="2" Margin="0,43,225.6,0"
                   HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Center" FontSize="15"
-                  Grid.Row="0" Grid.Column="0" />
-        <ComboBox x:Name="ComboBoxModel" Height="32" Width="100" TabIndex="2" Margin="0,43,330.962,0"
+                  Grid.Row="0" Grid.Column="1"/>
+        <ComboBox x:Name="ComboBoxModel" Height="32" Width="100" TabIndex="2" Margin="0,43,329.6,0"
                   HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Center" DisplayMemberPath = "Model" FontSize="15"
-                  Grid.Row="0" Grid.Column="0" />
-        <TextBox Name="TextBoxSeal" Height="32" Width="100" TabIndex="0" Margin="0,43,435.962,0" HorizontalAlignment="Right"
-                 VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15" Grid.Row="0" Grid.Column="0"
-                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label x:Name="LabelSealNumber" Content="Пломба" HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" Height="30"
-               Grid.Row="0" Grid.Column="0" />
-        <Label x:Name="LabelModel" Content="Модель" HorizontalAlignment="Left" Margin="115,8,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Height="30"
-               Grid.Row="0" Grid.Column="0" />
-        <Label x:Name="LabelOrganizacion" Content="Организация" HorizontalAlignment="Left" Margin="220,8,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" Height="30"
-               Grid.Row="0" Grid.Column="0" Width="99" />
-        <Label x:Name="LabelTodayDate" Content="Дата" HorizontalAlignment="Left" Margin="429,8,0,0" VerticalAlignment="Top" Width="117" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Height="30"
-               Grid.Row="0" Grid.Column="0" />
-        <DatePicker x:Name="DataPickerTodayDate" HorizontalAlignment="Left" Margin="429,43,0,0" VerticalAlignment="Top" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="32" Width="117"
-                    Grid.Row="0" Grid.Column="0" />
-        <DataGrid x:Name="DataGridCatrigesOnBalance" AutoGenerateColumns="False"
-                  ItemsSource="{Binding LoadDataBinding}" Background="#FFA8A8A8" SelectionChanged="DgCartriges_SelectionChanged" Margin="-1,4.8,0.4,0.4" Grid.Row="1" Grid.ColumnSpan="2"
-                  Grid.Column="0">
+                  Grid.Row="0" Grid.Column="1"/>
+        <TextBox Name="TextBoxSeal" Height="32" Width="100" TabIndex="0" Margin="0,43,434.6,0" HorizontalAlignment="Right"
+                 VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15" Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label x:Name="LabelSealNumber" Content="Пломба" HorizontalAlignment="Left" Margin="182,8,0,0" VerticalAlignment="Top" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" Height="30"
+               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
+        <Label x:Name="LabelModel" Content="Модель" HorizontalAlignment="Left" Margin="104.6,8,0,0" VerticalAlignment="Top" Width="100" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Height="30"
+               Grid.Row="0" Grid.Column="1" />
+        <Label x:Name="LabelOrganizacion" Content="Организация" HorizontalAlignment="Left" Margin="209.6,8,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" Height="30"
+               Grid.Row="0" Grid.Column="1" Width="99" />
+        <Label x:Name="LabelTodayDate" Content="Дата" HorizontalAlignment="Left" Margin="418.6,8,0,0" VerticalAlignment="Top" Width="116" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="15" Height="30"
+               Grid.Row="0" Grid.Column="1" />
+        <DatePicker x:Name="DataPickerTodayDate" HorizontalAlignment="Left" Margin="418.6,43,0,0" VerticalAlignment="Top" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="32" Width="117"
+                    Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  />
+        <DataGrid x:Name="CatrigesOnBalance"
+                  ItemsSource="{Binding LoadDataBinding}"
+                  SelectionMode="Single"
+                  AutoGenerateColumns="False" UseLayoutRounding="False" VerticalContentAlignment="Stretch"
+                  HorizontalContentAlignment="Stretch" VerticalAlignment="Bottom" Height="438.4"
+                  HorizontalAlignment="Left" Width="910.4" Grid.ColumnSpan="3"
+                  Grid.Column="0" Grid.Row="1">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">
                     <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -53,102 +57,35 @@
                     <Setter Property="TextBlock.TextAlignment" Value="Center" />
                 </Style>
             </DataGrid.CellStyle>
-            <DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem x:Name="DataGridMenuItemDeleteCartridge" Header="Удалить" Click="DataGridMenuItemDeleteCartridge_Click"/>
-                </ContextMenu>
-            </DataGrid.ContextMenu>
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Order}" Header="Номер" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
-                <!--<DataGridTextColumn Binding="{Binding Seal}" Header="Пломба" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />-->
-                <DataGridTextColumn Binding="{Binding Seal}"
-                                    Header="Пломба " FontSize="15">
-                    <DataGridTextColumn.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="{Binding Content, RelativeSource=
-                                         {RelativeSource Mode=TemplatedParent}}" />
-                                <TextBox x:Name="txtId" Width="100" TextChanged="TxtName_TextChanged" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTextColumn.HeaderTemplate>
-                </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Model}"
-                                    Header="Модель " FontSize="15">
-                    <DataGridTextColumn.HeaderTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Text="{Binding Content, RelativeSource=
-                                         {RelativeSource Mode=TemplatedParent}}" IsEnabled="False" />
-                                <TextBox x:Name="txtName" Width="100" TextChanged="TxtName_TextChanged" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTextColumn.HeaderTemplate>
-                </DataGridTextColumn>
-                <!--<DataGridTextColumn Binding="{Binding Model}" Header="Модель" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />-->
-                <DataGridTextColumn Binding="{Binding Organization}" Header="Организация" Width="auto"
-                                    IsReadOnly="True"
-                                    FontSize="15" />
+                <DataGridTextColumn Binding="{Binding Order}" Header="Номер" Width="auto" IsReadOnly="True" FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Seal}" Header="Пломба" Width="auto" IsReadOnly="True" FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Model}" Header="Модель" Width="auto" IsReadOnly="True"
+                                    FontSize="14" />
+                <DataGridTextColumn Binding="{Binding Organization}" Header="Организация" Width="auto" IsReadOnly="True"
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Info}" Header="Информация" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Data}" Header="Принят" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding Status}" Header="Статус" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
                 <DataGridTextColumn Binding="{Binding LSC}" Header="LSC" Width="auto" IsReadOnly="True"
-                                    FontSize="15" />
+                                    FontSize="14" />
             </DataGrid.Columns>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <DockPanel x:Name="DockPanelCartrigeInfo" Background="#FFB4B4B4">
-                        <Image x:Name="ImageCartrigeInfo" DockPanel.Dock="Left" Source="{Binding ImageUrl}"
-                               Height="280" Margin="10" />
-                        <Grid Margin="0,10" Name="DockTemplateGrid">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <TextBlock Text="Модель: " FontWeight="Bold" FontSize="20" />
-                            <TextBlock x:Name="TextBlockCartrigeInfoModel" Text="{Binding Model}" Grid.Row="0"
-                                       Grid.Column="1" FontSize="20" />
-                            <TextBlock Text="Производитель: " FontWeight="Bold" Grid.Row="1" Grid.Column="0"
-                                       FontSize="20" />
-                            <TextBlock x:Name="TextBlockCartrigeInfoVendor" Text="{Binding Vendor}" Grid.Column="1"
-                                       Grid.Row="1" FontSize="20" />
-                            <TextBlock Text="Тонер: " FontWeight="Bold" Grid.Row="2" Grid.Column="0" FontSize="20" />
-                            <TextBlock Text="{Binding Toner}" Grid.Column="1" Grid.Row="2" FontSize="20" />
-                        </Grid>
-                    </DockPanel>
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-            <DataGrid.Resources>
-                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#F50000"/>
-            </DataGrid.Resources>
         </DataGrid>
-        <TextBox x:Name="TextBoxInfo" Height="32" Width="100" TabIndex="0" Margin="0,43,121.962,0" HorizontalAlignment="Right"
-            VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15" Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Label x:Name="LabelInfo" Content="Доп. Инфо" HorizontalAlignment="Left" Margin="324,8,0,0" VerticalAlignment="Top" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" Height="30"
-               Grid.Row="0" Grid.Column="0" />
-        <TextBox x:Name="TextBoxSealToDelete" Height="40" FontSize="20" TabIndex="3" Margin="200,0,0,0.6" HorizontalAlignment="Left"
-            VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="2" Grid.Column="0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="109"/>
+        <TextBox x:Name="TextBoxInfo" Height="32" Width="100" TabIndex="0" Margin="0,43,120.6,0" HorizontalAlignment="Right"
+            VerticalAlignment="Top" TextWrapping="Wrap" FontSize="15" Grid.Row="0" Grid.Column="1" />
+        <Label x:Name="LabelInfo" Content="Доп. Инфо" HorizontalAlignment="Left" Margin="313.6,8,0,0" VerticalAlignment="Top" Width="100" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="15" Height="30"
+               Grid.Row="0" Grid.Column="1" />
+        <TextBox x:Name="TextBoxSealToDelete" Height="40" Width="162" FontSize="15" TabIndex="3" Margin="17.6,0,0,0.6" HorizontalAlignment="Left"
+            VerticalAlignment="Bottom" TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" />
         <Label x:Name="LbPlombNumber" Content="№ пломбы для удаления:" FontSize="15" HorizontalAlignment="Left" Margin="10,9.6,0,0"
-            VerticalAlignment="Top" Height="41" Grid.Row="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+            VerticalAlignment="Top" Height="41" Grid.Row="2" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.ColumnSpan="2"
             Grid.Column="0" Width="185"/>
-        <Button x:Name="ButtonDelete" Content="Удалить" FontSize="15" HorizontalAlignment="Left" Margin="324,8.6,0,0"
-            VerticalAlignment="Top" Width="140" Click="BtDelete_Click" Grid.Row="2" Grid.Column="0" Height="42" />
-        <Button Name="ButtonPrintDataGrid" Content="Распечатать список" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="20" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="109.6,25,0,0" VerticalAlignment="Top" Height="40" Width="189" Click="ButtonPrintDataGrid_Click"/>
+        <Button x:Name="ButtonDelete" Content="Удалить" FontSize="15" HorizontalAlignment="Left" Margin="184.6,8.6,0,0"
+            VerticalAlignment="Top" Width="140" Click="BtDelete_Click" Grid.Row="2" Grid.Column="1" Height="42" />
+        <Label x:Name="LbErrorMessage" Content="Введите номер пломбы !!!" FontSize="15" Visibility="Visible" Foreground="Red"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="1" Margin="329.6,9.6,0,0" Grid.Row="2" Height="41" Grid.ColumnSpan="2" Width="243" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
     </Grid>
 </Page>

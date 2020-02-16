@@ -16,13 +16,13 @@
                 <Image Source="Resources/Settings.ico" Height="21" Width="38" />
             </Button>
             <Separator />
-            <Button x:Name="BtAddToRefill" Content="Принять картридж на заправку" Click="BtAdd_Click" FontSize="15" />
+            <Button x:Name="BtAddToRefill" Content="Принять катридж на заправку" Click="BtAdd_Click" FontSize="15" />
             <Separator />
-            <Button x:Name="BtAddNewCartridge" Content="Картриджы на балансе" Click="BtAddNew_Click" FontSize="15" />
+            <Button x:Name="BtAddNewCartridge" Content="Катриджы на балансе" Click="BtAddNew_Click" FontSize="15" />
             <Separator />
-            <Button x:Name="BtCheckCarridge" Content="Проверить картридж" Click="BtCheck_Click" FontSize="15" />
+            <Button x:Name="BtCheckCarridge" Content="Проверить катридж" Click="BtCheck_Click" FontSize="15" />
         </ToolBar>
-        <Frame x:Name="MaiPageFrame" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+        <Frame x:Name="MaiPageFrame" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
                Margin="10,52,9.6,9.8"
                Grid.Row="0" Width="910" Height="579" />
     </Grid>
