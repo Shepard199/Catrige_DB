@@ -32,7 +32,7 @@ namespace Catrige_DB
         private void DataLoad()
         {
             const string strQuery =
-                "SELECT cart.Order, cart.Seal, cart.Model, cart.Organization, cart.Info, cart.Data, cart.Status, cart.LSC, cartmod.Vendor, cartmod.Toner, cartmod.ImageUrl FROM cartridges cart INNER JOIN cartridgesmodels cartmod ON cartmod.Model= cart.Model ORDER BY cart.Order";
+                "SELECT cart.Order, cart.Seal, cart.Model, cart.Organization, cart.Info, cart.Data, cart.Status, cart.LSC, cartmod.Vendor, cartmod.Toner, cartmod.ImageUrl FROM Cartridges cart INNER JOIN Cartridgesmodels cartmod ON cartmod.Model= cart.Model ORDER BY cart.Order";
             try
             {
                 using (MySqlConnection connection = new MySqlConnection(ConnectionString.ToString()))
@@ -40,7 +40,7 @@ namespace Catrige_DB
                 {
                     connection.Open();
                     //cmd.CommandText =
-                    //    "SELECT cart.Order, cart.Seal, cart.Model, cart.Organization, cart.Info, cart.Data, cart.Status, cart.LSC, cartmod.Vendor, cartmod.Toner, cartmod.ImageUrl FROM cartridges cart INNER JOIN cartridgesmodels cartmod ON cartmod.Model= cart.Model";                    
+                    //    "SELECT cart.Order, cart.Seal, cart.Model, cart.Organization, cart.Info, cart.Data, cart.Status, cart.LSC, cartmod.Vendor, cartmod.Toner, cartmod.ImageUrl FROM Cartridges cart INNER JOIN Cartridgesmodels cartmod ON cartmod.Model= cart.Model";                    
                     cmd.CommandText = strQuery;
                     MySqlDataAdapter adap = new MySqlDataAdapter(cmd);
                     DataSet ds = new DataSet();
@@ -66,7 +66,7 @@ namespace Catrige_DB
             using (MySqlConnection con = new MySqlConnection(ConnectionString.ToString()))
             {
                 con.Open();
-                string query = "SELECT `cartridges`.`Order` FROM `cartridges` ORDER BY `cartridges`.`Order` DESC LIMIT 1";
+                string query = "SELECT `Cartridges`.`Order` FROM `Cartridges` ORDER BY `Cartridges`.`Order` DESC LIMIT 1";
                 using (MySqlCommand sda = new MySqlCommand(query, con))
                 {
                     MySqlDataReader data = sda.ExecuteReader();
@@ -141,7 +141,7 @@ namespace Catrige_DB
                     else
                     {
                         //cartridge doesn't exist.
-                        const string insertQuery = "INSERT INTO Cartridges (cartridges.Order, Seal, Model, cartridges.Organization, Info, Data) " +
+                        const string insertQuery = "INSERT INTO Cartridges (Cartridges.Order, Seal, Model, Cartridges.Organization, Info, Data) " +
                                                    "VALUES (@Order, @Seal, @Model, @Organization, @Info, @Data)";
 
                         //connection.Open();
@@ -188,7 +188,7 @@ namespace Catrige_DB
         {
             using (MySqlConnection connection = new MySqlConnection(ConnectionString.ToString()))
             {
-                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT Model, Vendor FROM cartridgesmodels ORDER BY Model",
+                MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT Model, Vendor FROM Cartridgesmodels ORDER BY Model",
                     connection);
                 connection.Open();
                 DataTable dt = new DataTable();
@@ -255,13 +255,15 @@ namespace Catrige_DB
         {
             string message = "Распечать список?";
             string caption = "Печать списка";
-            MessageBoxButton buttons = MessageBoxButton.YesNo;
-            MessageBoxImage icon = MessageBoxImage.Question;
+            const MessageBoxButton buttons = MessageBoxButton.YesNo;
+            const MessageBoxImage icon = MessageBoxImage.Question;
             if (MessageBox.Show(message, caption, buttons, icon) == MessageBoxResult.OK)
             {
-                PrintDialog printDlg = new PrintDialog();
-                printDlg.PrintVisual(DataGridCatrigesOnBalance, "Grid Printing.");
+                //PrintDialog printDlg = new PrintDialog();
+                //printDlg.PrintVisual(DataGridCatrigesOnBalance, "Grid Printing.");
             }
+            //PrintDialog printDlg = new PrintDialog();
+            //printDlg.PrintVisual(DataGridCatrigesOnBalance, "Grid Printing.");
         }
     }
 

@@ -12,11 +12,12 @@ namespace Catrige_DB
 
         //MessageBox.Show($"MySQL version : {connection.ServerVersion}");
 
-        public static string ServerIp = "localhost";
-        //public static string ServerIp = "172.27.0.32";
+        //public static string ServerIp = "localhost";
+        public static string ServerIp = "172.27.0.32";
         public static uint ServerPort = 3306;
         public static string ServerUserId = "root";
-        public static string ServerPassword = "zxcv";
+        //public static string ServerPassword = "zxcv";
+        public static string ServerPassword = "";
         public static string ServerDatabase = "Cartridges";
 
         //public static double MainFrameWidth = -1;

@@ -33,7 +33,7 @@ namespace Catrige_DB
             using (MySqlConnection con = new MySqlConnection(ConnectionString.ToString()))
             {
                 con.Open();
-                string query = "SELECT `refill`.`Order` FROM `refill` ORDER BY `refill`.`Order` DESC LIMIT 1";
+                string query = "SELECT `Refill`.`Order` FROM `Refill` ORDER BY `Refill`.`Order` DESC LIMIT 1";
                 using (MySqlCommand sda = new MySqlCommand(query, con))
                 {
                     MySqlDataReader data = sda.ExecuteReader();
@@ -58,7 +58,7 @@ namespace Catrige_DB
                 {
                     if (!string.IsNullOrWhiteSpace(TextBoxSeal.Text) && TextBoxSeal.Text.Length > 2)
                     {
-                        const string sql = "INSERT INTO Refill (refill.Order, Seal, Accepted, Note) " +
+                        const string sql = "INSERT INTO Refill (Refill.Order, Seal, Accepted, Note) " +
                                            "VALUES (@Order, @Seal, @Accepted, @Note)";
                         int.TryParse(TextBoxSeal.Text, out int i);
                         connection.Open();
@@ -179,7 +179,7 @@ namespace Catrige_DB
         private void CheckBoxForRepair_Unchecked(object sender, RoutedEventArgs e)
         {
             CheckBoxForRepair.Content = "Ремон не требуется";
-            _repairStatus = "Ремон не требуется";
+            _repairStatus = "Ремонт не требуется";
             TextBoxForRepair.IsEnabled = false;
             TextBoxForRepair.Text = string.Empty;
         }
