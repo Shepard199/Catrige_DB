@@ -35,28 +35,5 @@ namespace Catrige_DB
             Password = ServerPassword,
             Database = ServerDatabase
         };
-
-        //private static readonly MySqlConnectionStringBuilder _cs = new MySqlConnectionStringBuilder
-        //{
-        //    Server = ServerIp,
-        //    Port = Convert.ToUInt32(ServerPort),
-        //    UserID = UserId,
-        //    Password = Password,
-        //    Database = Database
-        //};
-
-        //public void GetUserStatus()
-        //{
-        //    if (admin == true) // подключение к базе данных и получение статуса пользователя "[Администратор/Пользователь]"
-        //    {
-        //        IsAdmin = true;
-        //        UserStatus = " режим - [Администратор]";
-        //    }
-        //    else
-        //    {
-        //        IsAdmin = false;
-        //        UserStatus = " режим - [Пользователь]";
-        //    }
-        //}
     }
 }
